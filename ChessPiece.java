@@ -1,80 +1,41 @@
-
+import java.util.*;
 /**
- * Abstract ChessPiece class
+ * Write a description of class asdf here.
  *
- * @author Justin Chu
- * @version March 7th, 2018
+ * @author Rain Ma
+ * @version 23/04/2018
  */
-abstract class ChessPiece
+public abstract class ChessPiece
 {
-    //instance variables
-    private int row;
-    private char col;
-    private boolean isWhite; // false = black
-
+    // instance variables - replace the example below with your own
+    private int[][] moves;
+    private boolean isWhite;
+    int row;
+    int col;
+    
     /**
-     * Creates a new ChessPiece
-     * @param starting row location
-     * @param starting column location
-     * @param if the piece is white
+     * Constructor for objects of class asdf
      */
-    public ChessPiece(int startRow, char startCol, boolean white)
+    public ChessPiece(int row, int col, boolean isWhite)
     {
-        //change instance variables to location of piece
-        row = startRow;
-        col = startCol;
-        isWhite = white;
+        this.row = row;
+        this.col = col;
+        this.isWhite = isWhite;
+        
     }
-
-    /**
-     * subclasses must implement this method
-     * checks if a move is legal
-     * @param new row location
-     * @param new column location
-     * @return if this move is legal or not
-     */
-    abstract boolean isLegalMove(int r, char c);
-
-    /**
-     * change the instance variables to parameters
-     * @param new row location
-     * @param new column location
-     */
-    final void move(int r, char c)
+    
+    public abstract void findMove();
+    
+    
+    public int[][] getMoves()
     {
-        //if it is a legal move
-        if (isLegalMove(r,c))
-        {
-            //change old location to new location
-            row = r;
-            col = c;
-        }
+        return moves;
     }
-
-    /**
-     * gets row instance variable value
-     * @return row value
-     */
-    public int getRow()
-    {
-        return row;
-    }
-
-    /**
-     * gets column instance variable value
-     * @return col value
-     */
-    public char getCol()
-    {
-        return col;  
-    }
-
-    /**
-     * checks if a piece is white
-     * @return true if a piece is white
-     */
+    
     public boolean getIsWhite()
     {
         return isWhite;
     }
+    
+   
 }
